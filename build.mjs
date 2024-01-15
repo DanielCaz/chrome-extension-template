@@ -15,20 +15,20 @@ const build = async () => {
 
     console.log("Compiling tailwindcss...");
     execSync(
-      "tailwindcss -i ./src/styles/tailwind.css -o ./dist/styles/tailwind.css --minify"
+      "npx tailwindcss -i ./src/styles/tailwind.css -o ./dist/styles/tailwind.css --minify"
     );
     console.log("");
 
     console.log("Minifying JS...\n");
     let jsFiles = getFilesByExtention("./dist", "js");
     for (let file of jsFiles) {
-      execSync(`uglifyjs ${file} -o ${file} --compress --mangle`);
+      execSync(`npx uglify-js ${file} -o ${file} --compress --mangle`);
     }
 
     console.log("Minifying HTML...\n");
     let htmlFiles = getFilesByExtention("./dist", "html");
     for (let file of htmlFiles) {
-      execSync(`html-minifier --collapse-whitespace ${file} -o ${file}`);
+      execSync(`npx html-minifier --collapse-whitespace ${file} -o ${file}`);
     }
 
     console.log("Build completed successfully!");
