@@ -4,7 +4,8 @@
   "description": "A chrome extension",
   "main": "build.mjs",
   "scripts": {
-    "build": "node build.mjs"
+    "build": "build-chrome-extension",
+    "build-dev": "build-chrome-extension --skip-minify"
   },
   "repository": {
     "type": "git",
